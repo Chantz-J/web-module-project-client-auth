@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Logout from './components/Logout'
 import Friends from './components/Friends'
+import PrivateRoute from './components/PrivateRoute'
 
 import { GlobalStyles } from './styles/GlobalStyle'
 
@@ -17,7 +18,7 @@ export default function App(){
           <Route exact path ='/' component={Home}/>
           <Route path ='/login' component={Login}/>
           <Route path ='/logout' component={Logout}/>
-          <Route path ='/friends' component={Friends}/>
+          <PrivateRoute path='/friends' component={Friends} />
       </Switch>
     </>
   )

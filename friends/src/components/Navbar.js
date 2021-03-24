@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Nav = styled.nav`
@@ -24,8 +25,12 @@ const Nav = styled.nav`
 `
 
 export default function Navbar() {
+    const [loggedIn, setLoggedIn] = useState(false)
+    const history = useHistory()
     const logout = () => {
-
+        localStorage.removeItem('token')
+        setLoggedIn(!loggedIn)
+        history.push('/')
     }
     return (
         <Nav>
@@ -33,7 +38,7 @@ export default function Navbar() {
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/login'>Login</Link></li>
                 <li><Link to='/logout' onClick={logout}>Logout</Link></li>
-                <li><Link to='/friends'>Friends Page</Link></li>
+                <li><Link to='/friends' >Friends Page</Link></li>
             </ul>
         </Nav>
     )
